@@ -27,7 +27,7 @@ const RecruiterDashboard = () => {
   const fetchMyJobs = async () => {
     try {
       const token = await user.getToken();
-      const response = await axios.get('http://localhost:5000/api/jobs/my/posted', {
+      const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/jobs/my/posted`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setJobs(response.data);
