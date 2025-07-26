@@ -36,7 +36,7 @@ const EditJob = () => {
 
   const fetchJob = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/jobs/${id}`);
+      const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/jobs/${id}`);
       const job = response.data;
 
       setFormData({
@@ -75,7 +75,7 @@ const EditJob = () => {
           : [],
       };
 
-      await axios.put(`http://localhost:5000/api/jobs/${id}`, jobData, {
+      await axios.put(`${import.meta.env.VITE_API_BASE_URL}/api/jobs/${id}`, jobData, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
