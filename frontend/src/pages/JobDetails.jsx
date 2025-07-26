@@ -31,7 +31,7 @@ const JobDetails = () => {
 
   const fetchJob = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/jobs/${id}`);
+      const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/jobs/${id}`);
       setJob(response.data);
       setLoading(false);
     } catch (error) {
@@ -44,7 +44,7 @@ const JobDetails = () => {
     try {
       const token = await user?.getToken();
       const response = await axios.get(
-        "http://localhost:5000/api/applications/my",
+        `${import.meta.env.VITE_API_BASE_URL}/api/applications/my`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
