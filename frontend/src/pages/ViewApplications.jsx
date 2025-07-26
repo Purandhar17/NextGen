@@ -29,7 +29,7 @@ const ViewApplications = () => {
 
   const fetchJob = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/jobs/${jobId}`);
+      const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/jobs/${jobId}`);
       setJob(response.data);
     } catch (error) {
       console.error('Error fetching job:', error);
@@ -39,7 +39,7 @@ const ViewApplications = () => {
   const fetchApplications = async () => {
     try {
       const token = await user.getToken();
-      const response = await axios.get(`http://localhost:5000/api/applications/job/${jobId}`, {
+      const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/applications/job/${jobId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setApplications(response.data);
@@ -54,7 +54,7 @@ const ViewApplications = () => {
     try {
       const token = await user.getToken();
       await axios.put(
-        `http://localhost:5000/api/applications/${applicationId}/status`,
+        `${import.meta.env.VITE_API_BASE_URL}/api/applications/${applicationId}/status`,
         { status },
         { headers: { Authorization: `Bearer ${token}` } }
       );
